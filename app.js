@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-require.paths.unshift('./node_modules')
+require.paths.unshift('./node_modules');
 
 var express = require('express');
 
