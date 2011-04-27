@@ -3,6 +3,8 @@
  * Module dependencies.
  */
 
+require.paths.unshift('./node_modules')
+
 var express = require('express');
 
 var app = module.exports = express.createServer();
@@ -37,6 +39,6 @@ app.get('/', function(req, res){
 // Only listen on $ node app.js
 
 if (!module.parent) {
-  app.listen(3000);
+  app.listen(process.env.VMC_APP_PORT || 3000);
   console.log("Express server listening on port %d", app.address().port);
 }
