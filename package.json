@@ -2,6 +2,8 @@
 	"name": "infinigram",
 	"version": "0.0.1",
 	"dependencies": {
-		"express": ""
+		"express": "",
+		"jade": "",
+		"stylus": ""
 	}
 }
