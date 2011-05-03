@@ -1,8 +1,42 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 960px;
+  margin: auto;
+  font-size: 75%;
+  font-family: "Segoe UI";
 }
-
-a {
-  color: #00B7FF;
+#content {
+  margin: 60px 0 30px 0;
+  min-height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+header {
+  display: block;
+  top: 0;
+  position: fixed;
+  width: 960px;
+  height: 60px;
+  background-color: #fff;
+}
+header div {
+  display: table-cell;
+  vertical-align: middle;
+}
+header div:first-child {
+  width: 75%;
+}
+header div:last-child {
+  width: 25%;
+}
+header div:last-child form {
+  width: 100%;
+  text-align: right;
+}
+footer {
+  bottom: 0;
+  display: block;
+  position: fixed;
+  width: 960px;
+  height: 30px;
+  background-color: #fff;
 }

@@ -4,6 +4,7 @@
 	"dependencies": {
 		"express": "",
 		"jade": "",
-		"stylus": ""
+		"stylus": "",
+		"instagram": ""
 	}
 }

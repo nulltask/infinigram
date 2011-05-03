@@ -1,2 +1,15 @@
-h1= title
-p Welcome to #{title}
+header
+	div
+		h1= title
+	div
+		form#search
+			input(type="search", placeholder="keyword")
+			input(type="submit", value="Search")
+#content
+	#contentBox
+		p Welcome to #{title}. Enter keywords and hit search button!
+		form#search
+			input(type="search", placeholder="enter keywords")
+			input(type="submit", value="Search")
+footer
+	p &copy; 2011 #{title}. Some rights reserved.

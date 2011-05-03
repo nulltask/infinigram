@@ -1,0 +1,41 @@
+$header-height = 60px
+$footer-height = 30px
+$document-width = 960px
+
+body
+	width $document-width
+	margin auto
+	font-size 75%
+	font-family "Segoe UI"
+
+#content
+	margin $header-height 0 $footer-height 0
+	min-height 100%
+	display table-cell
+	vertical-align middle
+
+header
+	display block
+	top 0
+	position fixed
+	width $document-width
+	height $header-height
+	background-color white
+	div
+		display table-cell
+		vertical-align middle
+	div:first-child
+		width 75%
+	div:last-child
+		width 25%
+		form
+			width 100%
+			text-align right
+
+footer
+	bottom 0
+	display block
+	position fixed
+	width $document-width
+	height $footer-height
+	background-color white
