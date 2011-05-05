@@ -61,7 +61,9 @@ app.get("/tags/:tag.html", function(req, res) {
 		complete: function(data, pagination) {
 			// console.log([ pagination, data ]);
 			console.log(pagination);
-			res.render("list", { data: data, pagination: pagination });
+			setTimeout(function() {
+				res.render("list", { data: data, pagination: pagination });
+			}, 5000);
 		},
 		error: function(errorMessage, errorObject, caller) {
 			res.send(500);

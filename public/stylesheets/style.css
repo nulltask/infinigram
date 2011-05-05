@@ -1,3 +1,15 @@
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before {
+  content: "\0020";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.clearfix:after {
+  clear: both;
+}
 #nfscr-loading {
   z-index: 5000;
   position: fixed;
@@ -103,4 +115,7 @@ footer {
   height: 30px;
   background-color: #fff;
   z-index: 100;
+}
+footer .credit {
+  float: left;
 }

@@ -15,9 +15,9 @@
 			- })
 			p.nav
 				a(href="/tags/" + p.tag + ".html", rel="latest") latest
-				‡
+				- if (pagination.next_min_id)
 				a(href="/tags/" + p.tag + ".html?min_id=" + pagination.next_min_id, rel="newer") newer
-				‡
+				- if (pagination.next_max_id)
 				a(href="/tags/" + p.tag + ".html?max_id=" + pagination.next_max_id, rel="older") older
 		- else
 			p no image to load.

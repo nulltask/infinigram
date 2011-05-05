@@ -25,6 +25,16 @@ transition()
 	vendor("transition", arguments)
 	no-flickering()
 
+.clearfix
+	zoom 1
+	&:before
+		content: "\0020";
+		display: block;
+		height: 0;
+		visibility: hidden; 
+	&:after
+		clear: both;
+
 #nfscr-loading
 	z-index: 5000 
 	position: fixed;
@@ -111,3 +121,5 @@ footer
 	height $footer-height
 	background-color white
 	z-index $z-index-foreground
+	.credit
+		float left
