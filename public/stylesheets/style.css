@@ -1,0 +1,89 @@
+body {
+  width: 100%;
+  min-width: 960px;
+  margin: auto;
+  font-size: 75%;
+  font-family: "Segoe UI";
+}
+#content {
+  width: $docunent-width;
+  min-width: 960px;
+  margin: 60px 0 30px 0;
+  min-height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+header {
+  display: block;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  min-width: 960px;
+  height: 60px;
+  background-color: #fff;
+  z-index: 100;
+}
+header h1 {
+  font-family: "Bevan", serif;
+}
+header div {
+  display: table-cell;
+  vertical-align: middle;
+}
+header div:first-child {
+  width: 75%;
+}
+header div:last-child {
+  width: 25%;
+}
+header div:last-child form {
+  width: 100%;
+  text-align: right;
+}
+.container {
+  width: 100%;
+}
+.container div.box {
+  background-image: url("/images/throbber.gif");
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 3px;
+  padding: 3px;
+}
+.container div.box img {
+  -webkit-transition: 0.2s ease-out;
+  -moz-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
+  -ms-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+.container div.box img:hover {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  z-index: 101;
+}
+.container div.box img.row {
+  width: 194px;
+  height: 194px;
+}
+.container div.box img.standard {
+  width: 388px;
+  height: 388px;
+}
+.container div.box img.thumbnail {
+  width: 100px;
+  height: 100px;
+}
+footer {
+  bottom: 0;
+  display: block;
+  position: fixed;
+  width: 100%;
+  min-width: 960px;
+  height: 30px;
+  background-color: #fff;
+  z-index: 100;
+}

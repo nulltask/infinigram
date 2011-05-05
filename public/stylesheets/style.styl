@@ -1,14 +1,37 @@
 $header-height = 60px
 $footer-height = 30px
-$document-width = 960px
+$document-width = 100%
+$min-document-width = 960px
+
+$z-index-foreground = 100
+$z-index-image-hover = 101
+
+$image-size = 120px
+$image-margin = 3px
+
+transform(args)
+	-webkit-transform args
+	-moz-transform args
+	-o-transform args
+	-ms-transform args
+	transform args
+transition(args)
+	-webkit-transition args
+	-moz-transition args
+	-o-transition args
+	-ms-transition args
+	transition args
 
 body
 	width $document-width
+	min-width $min-document-width
 	margin auto
 	font-size 75%
 	font-family "Segoe UI"
 
 #content
+	width $docunent-width
+	min-width $min-document-width
 	margin $header-height 0 $footer-height 0
 	min-height 100%
 	display table-cell
@@ -19,8 +42,12 @@ header
 	top 0
 	position fixed
 	width $document-width
+	min-width $min-document-width
 	height $header-height
 	background-color white
+	z-index $z-index-foreground
+	h1
+		font-family "Bevan", serif
 	div
 		display table-cell
 		vertical-align middle
@@ -32,10 +59,39 @@ header
 			width 100%
 			text-align right
 
+$image-base-size = 100px
+
+.container
+	width $document-width
+	/* min-width $min-document-width */
+	div.box
+		background-image url('/images/throbber.gif')
+		background-position center center
+		background-repeat no-repeat
+		margin $image-margin
+		padding $image-margin
+		img
+			transition(0.2s ease-out)
+		img:hover
+			transform(scale(1.2))
+			z-index $z-index-image-hover
+		img.row
+			width $image-base-size * 2 - 6
+			height $image-base-size * 2 - 6
+		img.standard
+			width $image-base-size * 4 - 12
+			height $image-base-size * 4 - 12
+		img.thumbnail
+			width $image-base-size
+			height $image-base-size
+
 footer
 	bottom 0
 	display block
 	position fixed
 	width $document-width
+	min-width $min-document-width
 	height $footer-height
 	background-color white
+	z-index $z-index-foreground
+

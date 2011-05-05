@@ -1,0 +1,18 @@
+.container
+	- if (data.length)	
+		- data.forEach(function(item) {
+		.box
+			- if (item.likes.count >= 10) {
+				img.standard(src=item.images.standard_resolution.url)
+			- } else {
+				- if (item.likes.count >= 3) {
+				img.low(src=item.images.low_resolution.url)
+				- } else {
+				img.thumbnail(src=item.images.thumbnail.url)
+				- }
+			- }
+		- })
+		p.next
+			a(href="/tags/" + params.tag + ".html?min_id=" + lastItem.id) Next
+	- else
+		p no image to load.
