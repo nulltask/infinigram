@@ -10,47 +10,30 @@
 .clearfix:after {
   clear: both;
 }
-#nfscr-loading {
-  z-index: 5000;
-  position: fixed;
-  left: 40%;
-  bottom: 40px;
-  width: 200px;
-  height: 100px;
-  padding: 10px;
-  background: #000;
-  opacity: 0.8;
-  color: #fff;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
 body {
-  width: 100%;
-  min-width: 960px;
+  background-color: #333;
+  color: #ddd;
   margin: auto;
   font-size: 75%;
   font-family: "Segoe UI";
 }
 #content {
-  width: $docunent-width;
-  min-width: 960px;
-  margin: 60px 0 30px 0;
+  width: 100%;
+  margin: 60px 3px 30px 3px;
   min-height: 100%;
-  display: table-cell;
-  vertical-align: middle;
 }
 header {
   display: block;
   top: 0;
   position: fixed;
+  padding: 12px;
   width: 100%;
-  min-width: 960px;
   height: 60px;
   z-index: 100;
 }
 header h1 {
   font-family: "Bevan", serif;
+  font-size: 36px;
 }
 header div {
   display: table-cell;
@@ -66,56 +49,81 @@ header div:last-child form {
   width: 100%;
   text-align: right;
 }
-.container {
-  width: 100%;
-  min-width: 960px;
-}
 .container div.box {
   background-position: center center;
   background-repeat: no-repeat;
   background-color: #d3d3d3;
   margin: 3px;
-  padding: 3px;
+  border: solid 1px #fff;
+  box-sizing: border-box;
 }
 .container div.box img {
-  -webkit-transition: 0.2s ease-out;
-  -moz-transition: 0.2s ease-out;
-  -o-transition: 0.2s ease-out;
-  -ms-transition: 0.2s ease-out;
+  display: block;
   -webkit-transform: "translate3d(0, 0, 0)";
   -moz-transform: "translate3d(0, 0, 0)";
   -o-transform: "translate3d(0, 0, 0)";
   -ms-transform: "translate3d(0, 0, 0)";
-}
-.container div.box img:hover {
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  z-index: 101;
+  -webkit-transition: 0.2s ease-out;
+  -moz-transition: 0.2s ease-out;
+  -o-transition: 0.2s ease-out;
+  -ms-transition: 0.2s ease-out;
 }
 .container div.box img.row {
-  width: 194px;
-  height: 194px;
+  width: 148px;
+  height: 148px;
 }
 .container div.box img.standard {
-  width: 388px;
-  height: 388px;
+  width: 198px;
+  height: 198px;
 }
 .container div.box img.thumbnail {
-  width: 100px;
-  height: 100px;
+  width: 98px;
+  height: 98px;
 }
 footer {
   bottom: 0;
   display: block;
   position: fixed;
   width: 100%;
-  min-width: 960px;
   height: 30px;
-  background-color: #fff;
+  padding: 3px;
+  background-color: #ddd;
+  color: #333;
   z-index: 100;
 }
 footer .credit {
   float: left;
+  display: table-cell;
+  vertical-align: middle;
+}
+footer .buttons {
+  display: table-cell;
+  vertival-align: middle;
+}
+.loading {
+  background-color: #fff;
+  background-image: url("/images/throbber.gif");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  text-indent: -9999px;
+  display: none;
+  opacity: 0.8;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  -webkit-transform: "translate3d(0, 0, 0)";
+  -moz-transform: "translate3d(0, 0, 0)";
+  -o-transform: "translate3d(0, 0, 0)";
+  -ms-transform: "translate3d(0, 0, 0)";
+}
+.isotpe {
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,14 +1,14 @@
-$header-height = 60px
-$footer-height = 30px
+$base-value = 3px
+$header-height = $base-value * 20
+$footer-height = $base-value * 10
 $document-width = 100%
-$min-document-width = 960px
 
-$z-index-foreground = 100
+$z-index-loading = 5001
 $z-index-image-hover = 101
-$z-index-loading = 200
+$z-index-foreground = 100
 
-$image-size = 120px
-$image-margin = 3px
+$color-background = #333333
+$color-body-text = #dddddd
 
 vendor(prop, args)
 	// http://peter.sh/experiments/vendor-prefixed-css-property-overview/
@@ -16,14 +16,27 @@ vendor(prop, args)
 	-moz-{prop} args
 	-o-{prop} args
 	-ms-{prop} args
+
 no-flickering()
 	// http://hamalog.tumblr.com/post/5011193654/ios-css
 	vendor("transform", "translate3d(0, 0, 0)");
+
 transform()
 	vendor("transform", arguments)
+
 transition()
-	vendor("transition", arguments)
 	no-flickering()
+	vendor("transition", arguments)
+
+border-radius()
+	vendor("border-radius", arguments)
+
+opacity(n)
+	opacity n
+	filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
+
+hide-text()
+	text-indent -9999px
 
 .clearfix
 	zoom 1
@@ -35,46 +48,29 @@ transition()
 	&:after
 		clear: both;
 
-#nfscr-loading
-	z-index: 5000 
-	position: fixed;
-	left: 40%;
-	bottom: 40px;
-	width: 200px;
-	height: 100px;
-	padding: 10px;
-	background: #000; 
-	opacity: 0.8;
-	color: #FFF;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-
 body
-	width $document-width
-	min-width $min-document-width
+	background-color $color-background
+	color $color-body-text
 	margin auto
 	font-size 75%
 	font-family "Segoe UI"
 
 #content
-	width $docunent-width
-	min-width $min-document-width
-	margin $header-height 0 $footer-height 0
+	width 100%
+	margin $header-height $base-value $footer-height $base-value
 	min-height 100%
-	display table-cell
-	vertical-align middle
 
 header
 	display block
 	top 0
 	position fixed
+	padding $base-value * 4
 	width $document-width
-	min-width $min-document-width
 	height $header-height
 	z-index $z-index-foreground
 	h1
 		font-family "Bevan", serif
+		font-size $base-value * 12
 	div
 		display table-cell
 		vertical-align middle
@@ -86,40 +82,61 @@ header
 			width 100%
 			text-align right
 
-$image-base-size = 100px
-
 .container
-	width $document-width
-	min-width $min-document-width
 	div.box
 		background-position center center
 		background-repeat no-repeat
 		background-color lightgray
-		margin $image-margin
-		padding $image-margin
+		margin $base-value
+		border solid 1px #ffffff
+		box-sizing border-box
 		img
+			display block
 			transition(0.2s ease-out)
-		img:hover
-			transform(scale(1.2))
-			z-index $z-index-image-hover
 		img.row
-			width $image-base-size * 2 - 6
-			height $image-base-size * 2 - 6
+			width 148px
+			height 148px
 		img.standard
-			width $image-base-size * 4 - 12
-			height $image-base-size * 4 - 12
+			width 198px
+			height 198px
 		img.thumbnail
-			width $image-base-size
-			height $image-base-size
+			width 98px
+			height 98px
 
 footer
 	bottom 0
 	display block
 	position fixed
 	width $document-width
-	min-width $min-document-width
 	height $footer-height
-	background-color white
+	padding $base-value
+	background-color $color-body-text
+	color $color-background
 	z-index $z-index-foreground
 	.credit
 		float left
+		display table-cell
+		vertical-align middle
+	.buttons
+		display table-cell
+		vertival-align middle
+
+.loading
+	background-color #ffffff
+	background-image url("/images/throbber.gif")
+	background-position center center
+	background-repeat no-repeat
+	border-radius 3px
+	position fixed
+	top 16px
+	right 16px
+	width 48px
+	height 48px
+	hide-text()
+	display none
+	opacity 0.8
+	no-flickering()
+
+.isotpe
+	margin-left auto
+	margin-right auto

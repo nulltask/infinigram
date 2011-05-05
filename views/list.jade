@@ -1,23 +1,22 @@
 #content
 	.container
-		- if (data.length)	
-			- data.forEach(function(item) {
-			.box
-				- if (item.likes.count >= 10) {
-					img.standard(src=item.images.standard_resolution.url)
-				- } else {
-					- if (item.likes.count >= 3) {
-					img.low(src=item.images.low_resolution.url)
+		.images
+			- if (data.length)	
+				- data.forEach(function(item) {
+				.box
+					- if (item.likes.count >= 10) {
+						img.standard(src=item.images.standard_resolution.url, width="398", height="398")
 					- } else {
-					img.thumbnail(src=item.images.thumbnail.url)
+						- if (item.likes.count >= 3) {
+						img.low(src=item.images.low_resolution.url, width="198", height="198")
+						- } else {
+						img.thumbnail(src=item.images.thumbnail.url, width="98", height="98")
+						- }
 					- }
-				- }
-			- })
-			p.nav
-				a(href="/tags/" + p.tag + ".html", rel="latest") latest
-				- if (pagination.next_min_id)
-				a(href="/tags/" + p.tag + ".html?min_id=" + pagination.next_min_id, rel="newer") newer
-				- if (pagination.next_max_id)
-				a(href="/tags/" + p.tag + ".html?max_id=" + pagination.next_max_id, rel="older") older
-		- else
-			p no image to load.
+				- })
+		p.nav
+		a(href="/tags/" + p.tag + ".html", rel="latest") latest
+		- if (pagination.next_min_id)
+		a(href="/tags/" + p.tag + ".html?min_id=" + pagination.next_min_id, rel="newer") newer
+		- if (pagination.next_max_id)
+		a(href="/tags/" + p.tag + ".html?max_id=" + pagination.next_max_id, rel="older") older

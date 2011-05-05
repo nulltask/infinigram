@@ -10,6 +10,7 @@ var Instagram = require('instagram-node-lib');
 Instagram.set('client_id', clientId);
 Instagram.set('client_secret', clientSecret);
 var _ = require('underscore');
+var delayTime = 0;
 
 console.log(process.env);
 console.log([clientId, clientSecret]);
@@ -63,7 +64,7 @@ app.get("/tags/:tag.html", function(req, res) {
 			console.log(pagination);
 			setTimeout(function() {
 				res.render("list", { data: data, pagination: pagination });
-			}, 5000);
+			}, delayTime);
 		},
 		error: function(errorMessage, errorObject, caller) {
 			res.send(500);
