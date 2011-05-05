@@ -2,3 +2,4 @@ node_modules/*
 logs/*
 pids/*
 secrets/*
+.DS_Store
