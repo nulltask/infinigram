@@ -1,5 +1,9 @@
 (function($) {
 
+if (!window.console) {
+	window.console = { log: function(){} };
+}
+
 function showLoadingIndicator() {
 	$(".loading").fadeIn(250);
 }
@@ -37,7 +41,7 @@ function onComplete() {
 $(".searchBox").live("submit", function(event) {
 	var tag = $(this).find("[type=search]").val().replace(/\s/g, "_");
 	var jqxhr = $.ajax({
-		url: "/tags/" + tag + ".html",
+		url: "/tags/" + tag + "/media/recent.html",
 		type: "GET",
 		dataType: "html",
 		beforeSend: function() {
@@ -64,6 +68,10 @@ $(function() {
 	});
 	$("input[type=search]:first").focus();
 //	$(".loading").touchScroll();
+	$(window).bind("hashchange", function(event) {
+		console.log(event);
+	});
+	$(window).trigger("hashchange");
 });
 
 })(jQuery);

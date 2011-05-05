@@ -50,9 +50,7 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
-app.get("/tags/:tag.json", function(req, res) {
-});
-app.get("/tags/:tag.html", function(req, res) {
+app.get("/tags/:tag/media/recent.html", function(req, res) {
 	var query = {};
 	query.min_id = req.query.min_id;
 	query.max_id = req.query.max_id;
@@ -67,6 +65,7 @@ app.get("/tags/:tag.html", function(req, res) {
 			}, delayTime);
 		},
 		error: function(errorMessage, errorObject, caller) {
+			console.log([errorMessage, errorObject, caller]);
 			res.send(500);
 		}
 	}, query));

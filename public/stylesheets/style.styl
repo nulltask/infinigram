@@ -57,20 +57,17 @@ body
 
 #content
 	width 100%
-	margin $header-height $base-value $footer-height $base-value
+	margin 0 $base-value $footer-height $base-value
 	min-height 100%
 
 header
-	display block
-	top 0
-	position fixed
 	padding $base-value * 4
 	width $document-width
 	height $header-height
-	z-index $z-index-foreground
 	h1
 		font-family "Bevan", serif
 		font-size $base-value * 12
+		text-shadow #000000 1px 1px 1px
 	div
 		display table-cell
 		vertical-align middle
@@ -89,7 +86,7 @@ header
 		background-color lightgray
 		margin $base-value
 		border solid 1px #ffffff
-		box-sizing border-box
+		// box-sizing border-box
 		img
 			display block
 			transition(0.2s ease-out)
