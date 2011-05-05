@@ -1,3 +1,18 @@
+#nfscr-loading {
+  z-index: 5000;
+  position: fixed;
+  left: 40%;
+  bottom: 40px;
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  background: #000;
+  opacity: 0.8;
+  color: #fff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
 body {
   width: 100%;
   min-width: 960px;
@@ -20,7 +35,6 @@ header {
   width: 100%;
   min-width: 960px;
   height: 60px;
-  background-color: #fff;
   z-index: 100;
 }
 header h1 {
@@ -42,11 +56,12 @@ header div:last-child form {
 }
 .container {
   width: 100%;
+  min-width: 960px;
 }
 .container div.box {
-  background-image: url("/images/throbber.gif");
   background-position: center center;
   background-repeat: no-repeat;
+  background-color: #d3d3d3;
   margin: 3px;
   padding: 3px;
 }
@@ -55,14 +70,16 @@ header div:last-child form {
   -moz-transition: 0.2s ease-out;
   -o-transition: 0.2s ease-out;
   -ms-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
+  -webkit-transform: "translate3d(0, 0, 0)";
+  -moz-transform: "translate3d(0, 0, 0)";
+  -o-transform: "translate3d(0, 0, 0)";
+  -ms-transform: "translate3d(0, 0, 0)";
 }
 .container div.box img:hover {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -o-transform: scale(1.2);
   -ms-transform: scale(1.2);
-  transform: scale(1.2);
   z-index: 101;
 }
 .container div.box img.row {

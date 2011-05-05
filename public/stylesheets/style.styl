@@ -5,22 +5,40 @@ $min-document-width = 960px
 
 $z-index-foreground = 100
 $z-index-image-hover = 101
+$z-index-loading = 200
 
 $image-size = 120px
 $image-margin = 3px
 
-transform(args)
-	-webkit-transform args
-	-moz-transform args
-	-o-transform args
-	-ms-transform args
-	transform args
-transition(args)
-	-webkit-transition args
-	-moz-transition args
-	-o-transition args
-	-ms-transition args
-	transition args
+vendor(prop, args)
+	// http://peter.sh/experiments/vendor-prefixed-css-property-overview/
+	-webkit-{prop} args
+	-moz-{prop} args
+	-o-{prop} args
+	-ms-{prop} args
+no-flickering()
+	// http://hamalog.tumblr.com/post/5011193654/ios-css
+	vendor("transform", "translate3d(0, 0, 0)");
+transform()
+	vendor("transform", arguments)
+transition()
+	vendor("transition", arguments)
+	no-flickering()
+
+#nfscr-loading
+	z-index: 5000 
+	position: fixed;
+	left: 40%;
+	bottom: 40px;
+	width: 200px;
+	height: 100px;
+	padding: 10px;
+	background: #000; 
+	opacity: 0.8;
+	color: #FFF;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
 
 body
 	width $document-width
@@ -44,7 +62,6 @@ header
 	width $document-width
 	min-width $min-document-width
 	height $header-height
-	background-color white
 	z-index $z-index-foreground
 	h1
 		font-family "Bevan", serif
@@ -63,11 +80,11 @@ $image-base-size = 100px
 
 .container
 	width $document-width
-	/* min-width $min-document-width */
+	min-width $min-document-width
 	div.box
-		background-image url('/images/throbber.gif')
 		background-position center center
 		background-repeat no-repeat
+		background-color lightgray
 		margin $image-margin
 		padding $image-margin
 		img
@@ -94,4 +111,3 @@ footer
 	height $footer-height
 	background-color white
 	z-index $z-index-foreground
-

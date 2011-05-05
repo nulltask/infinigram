@@ -8,14 +8,14 @@ function resetContainer() {
 }
 function setupContainer() {
 	$(".container").masonry({
-		columnWidth: 106,
+		columnWidth: 100,
 		itemSelector: ".box:visible",
 		resizeable: true,
 		animate: true
 	});
 	$(".container").infinitescroll({
-		navSelector: ".next",
-		nextSelector: ".next a",
+		navSelector: ".nav",
+		nextSelector: ".nav a[rel=older]",
 		itemSelector: ".box",
 		donetext: "no more image to load.",
 		debug: true,
@@ -25,12 +25,14 @@ function setupContainer() {
 	},
 	function(elem) {
 		console.log(elem);
-		$(".container").masonry({ appendedContent: $(elem) });
+		setTimeout(function() {
+			$(".container").masonry({ appendedContent: $(elem) });
+		}, 1000);
 	})
 }
 
 $(".searchBox").live("submit", function(event) {
-	var tag = $(this).find("[type=search]").val();
+	var tag = $(this).find("[type=search]").val().replace(/\s/g, "_");
 	var jqxhr = $.ajax({
 		url: "/tags/" + tag + ".html",
 		type: "GET",
@@ -40,7 +42,8 @@ $(".searchBox").live("submit", function(event) {
 		},
 		success: function(data) {
 			var $data = $(data);
-			var $appendItem = $data.children();
+			var $appendItem = $data.find(".container").children();
+			console.log($appendItem);
 			$(".container").append($appendItem);
 			setupContainer();
 		},

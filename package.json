@@ -5,6 +5,7 @@
 		"express": "",
 		"jade": "",
 		"stylus": "",
-		"instagram": ""
+		"instagram-node-lib": "",
+		"underscore": ""
 	}
 }
