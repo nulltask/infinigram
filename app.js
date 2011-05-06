@@ -3,7 +3,7 @@
  */
 require.paths.unshift('./node_modules');
 var express = require('express');
-var app = module.exports = express.createServer();
+var app = module.exports = express.createServer(express.logger(), express.bodyParser());
 var clientId = process.env.INSTAGRAM_CLIENT_ID,
 	clientSecret = process.env.INSTAGRAM_CLIENT_SECRET;
 var Instagram = require('instagram-node-lib');
@@ -57,18 +57,18 @@ app.get("/tags/:tag/media/recent.html", function(req, res) {
 	var query = {};
 	query.min_id = req.query.min_id;
 	query.max_id = req.query.max_id;
-	console.log(req.query);
+//	console.log(req.query);
 	Instagram.tags.recent(_.extend({
 		name: req.params.tag,
 		complete: function(data, pagination) {
 			// console.log([ pagination, data ]);
-			console.log(pagination);
+			// console.log(pagination);
 			setTimeout(function() {
 				res.render("list", { data: data, pagination: pagination });
 			}, delayTime);
 		},
 		error: function(errorMessage, errorObject, caller) {
-			console.log([errorMessage, errorObject, caller]);
+			// console.log([errorMessage, errorObject, caller]);
 			res.send(500);
 		}
 	}, query));
@@ -77,5 +77,5 @@ app.get("/tags/:tag/media/recent.html", function(req, res) {
 // Only listen on $ node app.js
 if (!module.parent) {
 	app.listen(process.env.VMC_APP_PORT || 3000);
-	console.log("Express server listening on port %d", app.address().port);
+	// console.log("Express server listening on port %d", app.address().port);
 }
