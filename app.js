@@ -42,6 +42,9 @@ app.dynamicHelpers({
 	},
 	q: function(req, res) {
 		return req.query;
+	},
+	e: function(req, res) {
+		return process.env;
 	}
 });
 

@@ -3,23 +3,26 @@
 		.images
 			- if (data.length)	
 				- data.forEach(function(item) {
-				.box
-					- if (item.likes.count >= 10) {
-						img.standard(src=item.images.standard_resolution.url, width="398", height="398")
-					- } else {
-						- if (item.likes.count >= 3) {
-						img.low(src=item.images.low_resolution.url, width="198", height="198")
-						- } else {
-						img.thumbnail(src=item.images.thumbnail.url, width="98", height="98")
-						- }
-					- }
+				a(href=item.link)
+					.box
+						img.low(src=item.images.low_resolution.url, width="195", height="195")
+						//
+							- if (item.likes.count >= 24) {
+								img.standard(src=item.images.standard_resolution.url, width="395", height="395")
+							- } else {
+								- if (item.likes.count >= 6) {
+								img.low(src=item.images.low_resolution.url, width="195", height="195")
+								- } else {
+								img.thumbnail(src=item.images.thumbnail.url, width="95", height="95")
+								- }
+							- }
 				- })
 		p.nav
 			- if (data.length)
-				a(href="/tags/" + p.tag + ".html", rel="latest") latest
+				a(href="/tags/" + p.tag + "/media/recent.html", rel="latest") latest
 				- if (pagination.next_min_id)
-				a(href="/tags/" + p.tag + ".html?min_id=" + pagination.next_min_id, rel="newer") newer
+				a(href="/tags/" + p.tag + "/media/recent.html?min_id=" + pagination.next_min_id, rel="newer") newer
 				- if (pagination.next_max_id)
-				a(href="/tags/" + p.tag + ".html?max_id=" + pagination.next_max_id, rel="older") older
+				a(href="/tags/" + p.tag + "/media/recent.html?max_id=" + pagination.next_max_id, rel="older") older
 			- else
 				p no images to load.

@@ -1,22 +1,43 @@
 header
 	div
 		h1= title
-	div
-		form.searchBox
-			input(type="search", placeholder="keyword")
-			input(type="submit", value="Search")
 
 .loading loading...
 
+.searchBox
+	form
+		input(type="search", placeholder="keyword")
+		input(type="submit", value="Search")
+
 #content
 	#contentBox
-		p Welcome to #{title}. Enter keywords and hit search button!
-		form.searchBox
-			input(type="search", placeholder="enter keywords")
-			input(type="submit", value="Search")
+		// p Welcome to #{title}. Enter keywords and hit search button!
+		p Popular keyword:&nbsp
+			a(href="/tags/cat/media/recent.html") #cat
+			&nbsp;
+			a(href="/tags/dog/media/recent.html") #dog
+			&nbsp;
+			a(href="/tags/girl/media/recent.html") #girl
+			&nbsp;
+			a(href="/tags/baby/media/recent.html") #baby
+			&nbsp;
+			a(href="/tags/tokyo/media/recent.html") #tokyo
+			&nbsp;
+			a(href="/tags/pray4japan/media/recent.html") #pray4japan
+
 footer.clearfix
-	.credit (ɔ) 2011 #{title}. Some rights reserved.
-	.buttons
-		<a href="http://b.hatena.ne.jp/entry/http://infinigram.cloudfoundry.com/" class="hatena-bookmark-button" data-hatena-bookmark-title="infinigram" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfinigram.cloudfoundy.com%2F&amp;send=true&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=segoe+ui&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
-		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://infinigram.cloudfounry.com/" data-count="horizontal" data-via="infinigram">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	.credit
+		p
+			| (ɔ) 2011 #{title}. Some rights reserved.
+			- if (e.TWITTER_OFFICIAL_ACCOUNT) {
+			| Follow us (@#{e.TWITTER_OFFICIAL_ACCOUNT}) on Twitter!
+			- }
+	- if (e.SITE_URL) {
+	.buttons(class="clearfix")
+		.twitter
+			<a href="http://twitter.com/share" class="twitter-share-button" data-url="#{e.SITE_URL}" data-text="Check this out! ##{title}" data-count="horizontal" data-via="#{e.TWITTER_OFFICIAL_ACCOUNT}">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		.hatena
+			<a href="http://b.hatena.ne.jp/entry/#{e.SITE_URL}" class="hatena-bookmark-button" data-hatena-bookmark-title="#{title}" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+		.facebook
+			<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Finfinigram.cloudfoundry.com%2F&amp;send=false&amp;layout=button_count&amp;width=20&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=segoe+ui&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+	- }
