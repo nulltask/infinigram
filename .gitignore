@@ -1,6 +1,7 @@
+.DS_Store
+._*
 node_modules/*
 logs/*
 pids/*
 secrets/*
-.DS_Store
-._*
+public/stylesheets/*.css
