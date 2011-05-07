@@ -33,7 +33,7 @@ function onComplete() {
 		itemSelector: ".box",
 		layoutMode: "fitRows"
 	});
-	if ($(window).height() > $(document).height()) {
+	if ($(window).height() >= $(document).height()) {
 		$.autopager('load');
 	}
 	hideLoadingIndicator();
@@ -54,7 +54,7 @@ $(function() {
 	});
 	$("input[type=search]:first").focus();
 //	$(".loading").touchScroll();
-	$("footer").touchScroll();
+//	$("footer").touchScroll();
 	$(window).bind("hashchange", function(event) {
 		console.log(event);
 		if (event.fragment.length < 1) {
