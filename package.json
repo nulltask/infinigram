@@ -2,10 +2,10 @@
 	"name": "infinigram",
 	"version": "0.0.1",
 	"dependencies": {
-		"express": "",
-		"jade": "",
-		"stylus": "",
-		"instagram-node-lib": "",
-		"underscore": ""
+		"express": "2.3.3",
+		"jade": "0.10.7",
+		"stylus": "0.12.2",
+		"instagram-node-lib": "0.0.4",
+		"underscore": "1.1.6"
 	}
 }
