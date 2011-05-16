@@ -10,6 +10,9 @@ $z-index-foreground = 100
 $color-background = #333333
 $color-body-text = #dddddd
 
+$logo-width = 64px
+$logo-height = 64px
+
 vendor(prop, args)
 	// http://peter.sh/experiments/vendor-prefixed-css-property-overview/
 	-webkit-{prop} args
@@ -62,8 +65,12 @@ body
 	text-align center
 
 header
-	padding $base-value * 4
+	padding $base-value * 4 
+	padding-left $logo-width + $base-value * 2
 	height $header-height
+	background-image url("/images/logo.png")
+	background-position left $base-value * 4
+	background-repeat no-repeat
 	h1
 		font-family "Bevan", serif
 		font-size $base-value * 12
