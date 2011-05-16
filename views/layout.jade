@@ -4,15 +4,15 @@ html
 		meta(charset="UTF-8")
 		title= title
 		meta(name="description", content="instagram photo viewer with infinite scroll.")
-		<meta property="og:title" content="#{title}" />
-		<meta property="og:type" content="website" />
+		<meta property="og:title" content="#{title}">
+		<meta property="og:type" content="website">
 		- if (e.SITE_URL) {
-		<meta property="og:url" content="#{e.SITE_URL}" />
+		<meta property="og:url" content="#{e.SITE_URL}">
 		- }
-		<meta property="og:image" content="/images/twitter_icon.png" />
-		<meta property="og:site_name" content="#{title}" />
+		<meta property="og:image" content="#{e.SITE_URL}/images/twitter_icon.png">
+		<meta property="og:site_name" content="#{title}">
 		- if (e.FACEBOOK_ADMIN_ID) {
-		<meta property="fb:admins" content="#{e.FACEBOOK_ADMIN_ID}" />
+		<meta property="fb:admins" content="#{e.FACEBOOK_ADMIN_ID}">
 		- }
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		link(rel="stylesheet", href="https://github.com/paulirish/html5-boilerplate/raw/e4edeff4fa1aa8c81f495e2d75527584a29e83fb/css/style.css")
