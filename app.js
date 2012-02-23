@@ -1,18 +1,17 @@
+
 /**
  * Module dependencies.
  */
-require.paths.unshift('./node_modules');
 
 var express = require('express')
-  , app = module.exports = express.createServer(express.logger(), express.bodyParser())
-  , clientId = process.env.INSTAGRAM_CLIENT_ID
-  , clientSecret = process.env.INSTAGRAM_CLIENT_SECRET
-  , Instagram = require('instagram-node-lib')
-  , _ = require('underscore')
-  , delayTime = 0;
+  , app = module.exports = express.createServer()
+  , Instagram = require('./lib/instagram_client')
+  , _ = require('underscore');
 
+/**
+ * Configuration.
+ */
 
-// Configuration
 app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -21,67 +20,65 @@ app.configure(function() {
   app.use(require('stylus').middleware({ src : __dirname + '/public' }));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
-  Instagram.set('client_id', clientId);
-  Instagram.set('client_secret', clientSecret);
+  app.use(express.logger('dev'));
 });
 
 app.configure('development', function() {
-  app.use(express.errorHandler({
-    dumpExceptions : true
-  , showStack : true
-  }));
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function() {
   app.use(express.errorHandler());
 });
 
+/**
+ * Helpers.
+ */
+
+app.helpers({
+  title: 'infinigram';
+})
+
 app.dynamicHelpers({
-  title : function() {
-    return 'infinigram';
-  },
   p: function(req, res) {
     return req.params;
-  },
-  q: function(req, res) {
+  }
+, q: function(req, res) {
     return req.query;
-  },
-  e: function(req, res) {
+  }
+, e: function(req, res) {
     return process.env;
   }
 });
 
-// Routes
+/**
+ * Routes
+ */
+
 app.get('/', function(req, res) {
   res.render('index');
 });
 
 app.get("/tags/:tag/media/recent.html", function(req, res) {
-  var query = {};
-  query.min_id = req.query.min_id;
-  query.max_id = req.query.max_id;
-  //	console.log(req.query);
+  
+  var query = {
+    min_id = req.query.min_id
+  , max_id = req.query.max_id
+  };
+  
   Instagram.tags.recent(_.extend({
-    name: req.params.tag,
-    complete: function(data, pagination) {
-      // console.log([ pagination, data ]);
-      // console.log(pagination);
-      setTimeout(function() {
-        res.render("list", {
-          data : data,
-          pagination : pagination
-        });
-      }, delayTime);
+    name: req.params.tag
+  , complete: function(data, pagination) {
+      res.render("list", {
+        data: data
+      , pagination: pagination
+      });
     },
     error : function(errorMessage, errorObject, caller) {
-      // console.log([errorMessage, errorObject, caller]);
       res.send(500);
     }
   }, query));
 });
 
-// Only listen on $ node app.js
-if (!module.parent) {
-  app.listen(process.env.VMC_APP_PORT || 3000);
-  // console.log("Express server listening on port %d", app.address().port);
-}
+app.listen(process.env.PORT || process.env.VMC_APP_PORT || 3000);
+console.log("Express server listening on port %d", app.address().port);

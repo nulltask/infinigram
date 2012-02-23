@@ -1,11 +1,10 @@
 {
-    "name": "infinigram"
-  , "version": "0.1.0"
-  , "dependencies": {
-        "express": "2.4.x"
-      , "jade": "0.16.x"
-      , "stylus": "0.17.x"
-      , "instagram-node-lib": "0.0.4"
-      , "underscore": "1.2.x"
-    }
+  "name": "infinigram"
+, "version": "0.1.0"
+, "dependencies": {
+      "express": "2.x"
+    , "jade": "0.x"
+    , "stylus": "0.x"
+    , "instagram-node-lib": "0.0.7"
+  }
 }
