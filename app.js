@@ -36,7 +36,7 @@ app.configure('production', function() {
  */
 
 app.helpers({
-  title: 'infinigram';
+  title: 'infinigram'
 })
 
 app.dynamicHelpers({
@@ -62,8 +62,8 @@ app.get('/', function(req, res) {
 app.get("/tags/:tag/media/recent.html", function(req, res) {
   
   var query = {
-    min_id = req.query.min_id
-  , max_id = req.query.max_id
+    min_id: req.query.min_id
+  , max_id: req.query.max_id
   };
   
   Instagram.tags.recent(_.extend({
