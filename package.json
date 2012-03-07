@@ -5,6 +5,7 @@
       "express": "2.x"
     , "jade": "0.x"
     , "stylus": "0.x"
+    , "underscore": "1.x"
     , "instagram-node-lib": "0.0.7"
   }
 }
