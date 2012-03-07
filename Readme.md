@@ -25,7 +25,7 @@ __Infinigram__ is Instagram photo viewer with infinite scroll. Built on Node.
 
 #### Run
     
-    $ node app
+    $ INSTAGRAM_CLIENT_ID="Your client ID" INSTAGRAM_CLIENT_SECRET="your client secret" node app
 
 ## License
 
