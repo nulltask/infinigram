@@ -8,4 +8,7 @@
     , "underscore": "1.x"
     , "instagram-node-lib": "0.0.7"
   }
+, "engines": {
+    "node": "0.6.x"
+  }
 }
